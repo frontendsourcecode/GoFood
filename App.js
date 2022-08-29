@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import 'react-native-gesture-handler';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import messaging from '@react-native-firebase/messaging';
 import SplashScreen from './src/screen/SplashScreen';
 import WelcomeScreen from './src/screen/WelcomeScreen';
 import PreRegisterScreen from './src/screen/PreRegisterScreen';
@@ -25,12 +24,10 @@ import OrderSuccess from "./src/screen/OrderSuccess";
 import OrderScreen from "./src/screen/OrderScreen";
 import OrderStatus from "./src/screen/OrderScreen/OrderStatus";
 import OrderDelivery from "./src/screen/OrderScreen/OrderDelivery";
-import { Alert } from 'react-native';
-import { requestUserPermission,notificationListener } from './src/utils/NotificationService';
 
-const MainStack = createStackNavigator();
-const RootStack = createStackNavigator();
-const OrderStack = createStackNavigator();
+const MainStack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator();
+const OrderStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 global.currentScreenIndex = 0;
@@ -99,10 +96,7 @@ class App extends Component {
 
         </RootStack.Navigator>
     );
-    componentDidMount = async () => {
-        requestUserPermission();
-        notificationListener();
-    };
+
 
    
     render() {
